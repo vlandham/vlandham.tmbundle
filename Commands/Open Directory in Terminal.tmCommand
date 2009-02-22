@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>cat &lt;&lt;'RUBYEOF' &gt; /tmp/vlandham-$$.rb
+require 'rubygems'
+require 'appscript'
+include Appscript
+term = app("Terminal")
+term.activate
+term.do_script "cd #{ENV['TM_DIRECTORY'].to_s.inspect}"
+
+RUBYEOF
+
+${TM_RUBY:-ruby} /tmp/vlandham-$$.rb; exit_status=$?; rm /tmp/vlandham-$$.rb; exit $exit_status</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^~@t</string>
+	<key>name</key>
+	<string>Open Directory in Terminal</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>E118DC43-D3B8-47A1-9544-395BE17B7BD7</string>
+</dict>
+</plist>
