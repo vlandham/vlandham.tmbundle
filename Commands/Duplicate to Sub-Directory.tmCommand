@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+#
+# Duplicates the contents of the current directory to a sub-directory 
+FileDir		= ENV['TM_DIRECTORY'].to_s.inspect
+
+ret = `cp -R #{FileDir} #{FileDir}tmp`
+puts ret
+ret &lt;&lt; `mv -f #{FileDir}tmp #{FileDir}/original`
+ret &lt;&lt; "\nCreated original folder in #{FileDir}"
+puts ret
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^~@d</string>
+	<key>name</key>
+	<string>Duplicate to Sub-Directory</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>528A39CE-64A0-46C5-AF28-444DF0C74430</string>
+</dict>
+</plist>

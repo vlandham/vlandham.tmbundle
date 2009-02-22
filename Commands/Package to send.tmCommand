@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+#
+# Duplicates the contents of the current directory to a sub-directory 
+file_dir		= ENV['TM_DIRECTORY'].to_s
+org_dir		= ENV['TM_DIRECTORY'].to_s.inspect+"/original"
+
+# run make
+ret = `make clean`
+puts ret
+
+# create diff 
+ret = `diff -wu #{org_dir} #{file_dir} &gt; #{file_dir}/changes_from_jvalland.diff`
+
+# remove original folder
+ret = `rm -rf #{org_dir}`
+
+#tar up new version
+tar_command = "tar cf ../#{File.basename(file_dir)}_mod.tar ../#{File.basename(file_dir)}"
+ret = "Executing: #{tar_command}"
+puts ret
+ret = `#{tar_command}`
+puts ret
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^~@p</string>
+	<key>name</key>
+	<string>Package to send</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>1537531B-0228-41E6-81B8-77540E9B06AC</string>
+</dict>
+</plist>

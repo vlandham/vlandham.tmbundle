@@ -5,13 +5,14 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>echo "$TM_FILEPATH"</string>
+	<string>echo "File: $TM_FILEPATH"
+echo "Directory: $TM_DIRECTORY"</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
-	<string>^~@d</string>
+	<string>^~@i</string>
 	<key>name</key>
-	<string>Show Path to Current Document</string>
+	<string>Show Information</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
 	<key>uuid</key>
